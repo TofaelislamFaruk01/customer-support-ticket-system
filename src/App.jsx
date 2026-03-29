@@ -2,6 +2,7 @@
 import './App.css'
 import Footer from './footer/Footer'
 import Navbar from './navbar/navbar'
+import Banner from './banner/Banner'
 
 function App() {
   
@@ -11,9 +12,9 @@ function App() {
       <nav>
         <Navbar/>
       </nav>
-      <main className="flex-grow">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-2xl text-black font-bold">Welcome to the CS - Ticket System</h1>
+      <main className="flex-grow ">
+        <div className="max-w-7xl mx-auto px-10 py-10">
+          <Banner />
         </div>
       </main>
       <footer>
