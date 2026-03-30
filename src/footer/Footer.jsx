@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-gray-300">
   {/* Top Section */}
-  <div className="max-w-7xl mx-auto px-10 py-12 grid gap-8 md:grid-cols-3 lg:grid-cols-5">
+  <div className="max-w-7xl mx-auto px-7 py-12 grid gap-8 md:grid-cols-3 lg:grid-cols-5">
     
     {/* Brand */}
     <div className="">
@@ -15,10 +15,8 @@ const Footer = () => {
         CS — Ticket System
       </h2>
       <p className="text-sm leading-relaxed">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+      A smart ticket management platform that helps support teams organize tasks, 
+      resolve issues faster, and deliver better customer experiences.
       </p>
     </div>
 
