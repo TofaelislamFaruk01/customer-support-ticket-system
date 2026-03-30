@@ -1,12 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
+import { FaCalendar, FaRegCircle } from "react-icons/fa";
 
 const Banner = () => {
   const [tickets, setTickets] = useState([]);
   const [taskStatus, setTaskStatus] = useState([]);
   const [resolvedTasks, setResolvedTasks] = useState([]);
 
-  // Toast state
+ 
   const [toast, setToast] = useState({ show: false, message: "", type: "info" });
 
   useEffect(() => {
@@ -31,15 +31,15 @@ const Banner = () => {
     return "text-green-500";
   };
 
-  // Show toast helper
+ 
   const showToast = (message, type = "info") => {
     setToast({ show: true, message, type });
     setTimeout(() => {
       setToast({ show: false, message: "", type: "info" });
-    }, 3000); // Hide after 3 seconds
+    }, 3000); 
   };
 
-  // Add ticket to Task Status
+ 
   const handleAddToTask = (ticket) => {
     if (
       !taskStatus.find((t) => t.id === ticket.id) &&
@@ -50,7 +50,7 @@ const Banner = () => {
     }
   };
 
-  // Complete task
+ 
   const handleComplete = (ticketId) => {
     const completed = taskStatus.find((t) => t.id === ticketId);
     if (completed) {
@@ -62,7 +62,7 @@ const Banner = () => {
 
   return (
     <div>
-      {/* Toast */}
+     
       {toast.show && (
         <div className="toast toast-top toast-start fixed z-50 m-4">
           <div
@@ -75,7 +75,7 @@ const Banner = () => {
         </div>
       )}
 
-      {/* Banner */}
+     
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div className="card text-white shadow-xl bg-gradient-to-r from-purple-600 to-indigo-500">
           <div className="card-body flex flex-col items-center justify-center text-center py-10 lg:h-[250px]">
@@ -96,10 +96,10 @@ const Banner = () => {
         </div>
       </div>
 
-      {/* Tickets Section */}
+     
       <div className="p-6 min-h-screen">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* LEFT: Tickets */}
+        
           <div className="lg:col-span-2">
             <h2 className="text-xl text-black font-semibold mb-4">Customer Tickets</h2>
 
@@ -113,7 +113,7 @@ const Banner = () => {
                   <div className="card-body text-black p-4">
                     <div className="flex justify-between items-start">
                       <h3 className="font-semibold text-sm">{ticket.title}</h3>
-                      <span className={`badge ${getStatusColor(ticket.status)} badge-sm`}>
+                      <span className={`badge ${getStatusColor(ticket.status)} badge-sm`}> <FaRegCircle className="w-3 h-3"/>
                         {ticket.status}
                       </span>
                     </div>
@@ -128,7 +128,8 @@ const Banner = () => {
                       </div>
                       <div className="flex items-center gap-2 text-gray-400">
                         <span>{ticket.customer}</span>
-                        <span>{ticket.createdAt}</span>
+                        <FaCalendar className="w-4 h-4" />
+                        <span>   {ticket.createdAt}</span>
                       </div>
                     </div>
                   </div>
