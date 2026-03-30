@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaCalendar, FaRegCircle } from "react-icons/fa";
+import { FaCalendar, FaCheckCircle, FaRegCheckCircle } from "react-icons/fa";
 
 const Banner = () => {
   const [tickets, setTickets] = useState([]);
@@ -19,11 +19,6 @@ const Banner = () => {
   const inProgressCount = taskStatus.length;
   const resolvedCount = resolvedTasks.length;
 
-  const getStatusColor = (status) => {
-    if (status === "Open") return "badge-success";
-    if (status === "In-Progress") return "badge-warning";
-    return "badge-neutral";
-  };
 
   const getPriorityColor = (priority) => {
     if (priority === "HIGH") return "text-red-500";
@@ -56,6 +51,7 @@ const Banner = () => {
     if (completed) {
       setTaskStatus(taskStatus.filter((t) => t.id !== ticketId));
       setResolvedTasks([...resolvedTasks, completed]);
+      setTickets(tickets.filter((t) => t.id !== ticketId));
       showToast(`Ticket "${completed.title}" marked as resolved!`, "success");
     }
   };
@@ -104,7 +100,17 @@ const Banner = () => {
             <h2 className="text-xl text-black font-semibold mb-4">Customer Tickets</h2>
 
             <div className="grid md:grid-cols-2 gap-4">
-              {tickets.map((ticket) => (
+              {tickets.length === 0 ? (
+                 <div className="col-span-full flex flex-col items-center justify-center py-10 text-gray-400">
+  
+                    <FaRegCheckCircle className="text-5xl text-green-400 mb-3" />
+                  
+                    <p className="text-lg font-medium">No customer tickets</p>
+                    <p className="text-sm">All tickets have been handled.</p>
+                  
+                  </div>
+                ) : (
+              tickets.map((ticket) => (
                 <div
                   key={ticket.id}
                   className="card bg-white shadow-md cursor-pointer hover:shadow-xl transition"
@@ -113,7 +119,20 @@ const Banner = () => {
                   <div className="card-body text-black p-4">
                     <div className="flex justify-between items-start">
                       <h3 className="font-semibold text-sm">{ticket.title}</h3>
-                      <span className={`badge ${getStatusColor(ticket.status)} badge-sm`}> <FaRegCircle className="w-3 h-3"/>
+                      <span
+                        className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium
+                        ${ticket.status === "Open" && "bg-green-100 text-green-700"}
+                        ${ticket.status === "In-Progress" && "bg-yellow-100 text-yellow-700"}
+                        ${ticket.status !== "Open" && ticket.status !== "In-Progress" && "bg-gray-100 text-gray-600"}
+                      `}
+                      >
+                        <span
+                          className={`w-2 h-2 rounded-full
+                          ${ticket.status === "Open" && "bg-green-500"}
+                          ${ticket.status === "In-Progress" && "bg-yellow-500"}
+                          ${ticket.status !== "Open" && ticket.status !== "In-Progress" && "bg-gray-400"}
+                        `}
+                        ></span>
                         {ticket.status}
                       </span>
                     </div>
@@ -134,7 +153,7 @@ const Banner = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              )))}
             </div>
           </div>
 
