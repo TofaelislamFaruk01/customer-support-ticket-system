@@ -1,6 +1,6 @@
 import './App.css'
 import Footer from './footer/Footer'
-import Navbar from './navbar/navbar'
+import Navbar from './navbar/Navbar'
 import Banner from './banner/Banner'
 
 function App() {
