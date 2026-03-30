@@ -1,4 +1,7 @@
 import React from 'react'
+import { BsTwitterX } from 'react-icons/bs'
+import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
+import { SlEnvolopeLetter } from 'react-icons/sl'
 
 const Footer = () => {
   return (
@@ -49,16 +52,43 @@ const Footer = () => {
       </ul>
     </div>
 
-    {/* Social Links */}
     <div>
-      <h6 className="text-white font-semibold mb-3">Social Links</h6>
-      <ul className="space-y-3 text-sm">
-        <li>𝕏 @ CS — Ticket System</li>
-        <li>📸 @ CS — Ticket System</li>
-        <li>📘 CS — Ticket System</li>
-        <li>✉️ support@cst.com</li>
-      </ul>
+        <h6 className="text-white font-semibold mb-4">Social Links</h6>
+
+        <ul className="space-y-4 text-sm text-gray-400">
+          
+          <li className="flex items-center gap-3 hover:text-white transition">
+            <span className="w-5 h-5 flex items-center justify-center rounded-full bg-white">
+              <BsTwitterX className="text-xs text-black" />
+            </span>
+            <span>@CS — Ticket System</span>
+          </li>
+
+          <li className="flex items-center gap-3 hover:text-white transition">
+            <span className="w-5 h-5 flex items-center justify-center rounded-full bg-white">
+              <FaLinkedinIn className="text-xs text-black" />
+            </span>
+            <span>@CS — Ticket System</span>
+          </li>
+
+          <li className="flex items-center gap-3 hover:text-white transition">
+            <span className="w-5 h-5 flex items-center justify-center rounded-full bg-white">
+              <FaFacebookF className="text-xs text-black" />
+            </span>
+            <span>@CS — Ticket System</span>
+          </li>
+
+          <li className="flex items-center gap-3 hover:text-white transition">
+            <span className="w-5 h-5 flex items-center justify-center rounded-full bg-white">
+              <SlEnvolopeLetter className="text-xs text-black" />
+            </span>
+            <span>support@cst.com</span>
+          </li>
+
+        </ul>
     </div>
+
+      
   </div>
 
   {/* Divider */}
